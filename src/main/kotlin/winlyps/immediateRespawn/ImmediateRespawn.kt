@@ -14,6 +14,9 @@ class ImmediateRespawn : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("ImmediateRespawn plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("doImmediateRespawn", "false")
+            logger.info("ImmediateRespawn plugin has been disabled.")
+        }
     }
 }
